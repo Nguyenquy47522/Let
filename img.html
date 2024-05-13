@@ -1,0 +1,63 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+<style>
+  #map{
+  height: 100%;}
+</style>
+
+  </head>
+  <body>
+    <div id="map"></div>
+<script> 
+  var map = L.map('map').setView([10.0364634, 105.7875821], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+
+var cl=['red','blue','black']
+
+var marker;
+
+function onMapClick(e) {
+
+  var popup = L.popup();
+
+  function onMapClick(e) {
+      popup
+          .setLatLng(e.latlng)
+          .setContent('<img src="data:image/jpeg;base64,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"><h3> hello <\h3>')
+          .openOn(map);
+  }
+  
+  map.on('click', onMapClick);
+
+
+}
+map.on('click', onMapClick);
+
+
+
+
+
+
+
+</script>
+  </body>
+</html>>
