@@ -1,0 +1,61 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+<style>
+  #map{
+  height: 100%;}
+</style>
+
+  </head>
+  <body>
+    <div id="map"></div>
+<script> 
+  var map = L.map('map').setView([10.0364634, 105.7875821], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+
+var cl=['red','blue','black']
+
+var marker;
+
+function onMapClick(e) {
+
+  var myIcon = L.icon({
+    iconUrl: 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/435480336_3658607734460814_2763391966052562439_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFAP_EYsfNWFythYq8GmFoAmWQvGt75pKWZZC8a3vmkpYsXl5dGgecX82oGmHF2n4T_H0mSaHxtgeA6wvCsJxYf&_nc_ohc=MZJUp7yL2q4Q7kNvgF4YfSX&_nc_ht=scontent.fsgn5-14.fna&oh=00_AYDsGpCpYLN1s41tCnDiAF-TWK76pbvJ9Wl6WkoFwDUs8A&oe=6647AAA5',
+    iconSize: [150, 200],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+});
+
+L.marker(e.latlng, {icon: myIcon}).addTo(map);
+
+
+}
+map.on('click', onMapClick);
+
+
+
+
+
+
+
+</script>
+  </body>
+</html>>
